@@ -1,0 +1,50 @@
+/* Estilos generales */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif; /* Tipografía global */
+}
+
+/* Estilos para el encabezado */
+.header-container {
+  background-color: #4CAF50; /* Color de fondo */
+  color: white;
+  padding: 20px;
+  text-align: center; /* Asegurar que el texto esté centrado */
+}
+
+/* Estilo para el título */
+.title {
+  font-size: 2.5em; /* Tamaño del título */
+  font-weight: bold; /* Negrita */
+  margin-left: 10px; /* Espacio a la izquierda */
+}
+
+/* Estilo de la lista de navegación */
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex; /* Usar flexbox */
+  justify-content: center; /* Centro horizontalmente */
+  margin-top: 20px; /* Espacio superior para separar del título */
+}
+
+/* Estilo para los enlaces */
+.nav-link {
+  color: white; /* Color del texto */
+  text-decoration: none; /* Sin subrayado */
+  font-weight: bold; /* Negrita */
+  padding: 10px 15px; /* Espaciado */
+}
+
+/* Cambios para que parezca un botón */
+.nav-link:hover {
+  text-decoration: underline; /* Subraya el texto al pasar el mouse */
+  background-color: rgba(255, 255, 255, 0.2); /* Fondo blanco ligeramente transparente al pasar el mouse */
+}
+
+/* Estilo de los enlaces en el encabezado */
+.nav-list li {
+  margin: 0 10px; /* Espacio entre enlaces */
+}
