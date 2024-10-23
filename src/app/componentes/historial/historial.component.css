@@ -1,0 +1,97 @@
+/* Aseguramos que el fondo sea blanco y centramos el contenido */
+.container {
+    background-color: white;
+    padding: 20px;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Estilos para el título */
+  .title {
+    font-size: 4em; /* Incrementamos el tamaño de fuente */
+    color: black;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+    width: 100%; /* Asegura que el título ocupe todo el ancho */
+  }
+  
+  /* Estilos para la tabla */
+  .tabla-servicios {
+    width: 100%;
+    max-width: 1200px; /* Limita el ancho máximo si es necesario */
+    border-collapse: collapse;
+    margin: 0 auto; /* Asegura que la tabla esté centrada */
+  }
+  
+  .tabla-servicios th, .tabla-servicios td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .tabla-servicios thead {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  /* Para hacer que la tabla se ajuste correctamente en pantallas pequeñas */
+  @media (max-width: 768px) {
+    .tabla-servicios {
+      width: 100%;
+      font-size: 0.9em;
+    }
+  }  
+
+.title {
+    font-size: 4em; /* Tamaño grande del título */
+    color: black; /* Color del texto */
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+    width: 100%; /* Asegura que el título ocupe todo el ancho */
+    background-color: white; /* Azul claro */
+  }
+
+  .table-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    margin-top: 20px; /* Espaciado superior */
+  }
+  
+  .tabla-servicios {
+    width: 100%;
+    max-width: 1200px; /* Limita el ancho máximo si es necesario */
+    border-collapse: collapse;
+    margin: 0 auto; /* Asegura que la tabla esté centrada */
+  }
+  
+  .tabla-servicios th, .tabla-servicios td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .tabla-servicios thead {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .btn-volver {
+    display: block; /* Asegura que el botón esté en una nueva línea */
+    margin: 20px auto; /* Centra el botón horizontalmente */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 1.2em; /* Tamaño de la fuente */
+    background-color: #4CAF50; /* Color de fondo azul */
+    color: white; /* Color del texto */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  }
+  
+  .btn-volver:hover {
+    background-color: #4CAF50; /* Cambia el color al pasar el mouse */
+  }

@@ -1,0 +1,27 @@
+<h1 class="title">HISTORIAL DE SERVICIOS</h1>
+
+<div class="table-container">
+    <table class="tabla-servicios">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre Servicio</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Duración (min)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let servicio of historialServicios">
+          <td>{{ servicio.id }}</td>
+          <td>{{ servicio.nombreServicio }}</td>
+          <td>{{ servicio.descripcion }}</td>
+          <td>{{ servicio.precio | currency:'USD' }}</td> <!-- Formatea el precio como moneda -->
+          <td>{{ servicio.duracionMinutos }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+  <button class="btn-volver" (click)="volver()">Volver</button>
