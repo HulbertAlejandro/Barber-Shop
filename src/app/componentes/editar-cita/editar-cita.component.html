@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de Cita</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif; /* Tipografía global */
+        }
+
+        body {
+            background-color: #f4f4f9; /* Color de fondo */
+            display: flex; /* Usar flexbox para centrar */
+            justify-content: center; /* Centrar horizontalmente */
+            align-items: center; /* Centrar verticalmente */
+            height: 100vh; /* Altura completa de la ventana */
+            margin: 0; /* Sin margen en el body */
+        }
+
+        .reservation-container {
+            width: 90%; /* Ancho del contenedor */
+            max-width: 500px; /* Ancho máximo del contenedor */
+            background-color: #fff; /* Fondo blanco para el formulario */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            padding: 20px; /* Espaciado interno */
+        }
+
+        h2 {
+            text-align: center; /* Centrar el título */
+            color: #4CAF50; /* Color del título */
+        }
+
+        .form-group {
+            margin-bottom: 15px; /* Espaciado entre grupos de formularios */
+        }
+
+        label {
+            display: block; /* Mostrar etiqueta como bloque */
+            margin-bottom: 5px; /* Espacio debajo de la etiqueta */
+            color: #333; /* Color del texto de la etiqueta */
+        }
+
+        select, input {
+            width: 100%; /* Ocupa todo el ancho */
+            padding: 10px; /* Espaciado interno */
+            border: 1px solid #ccc; /* Borde gris claro */
+            border-radius: 4px; /* Bordes redondeados */
+            font-size: 16px; /* Tamaño de fuente */
+        }
+
+        .submit-btn {
+            background-color: #4CAF50; /* Color de fondo del botón */
+            color: white; /* Color del texto del botón */
+            border: none; /* Sin borde */
+            padding: 10px 15px; /* Espaciado interno */
+            border-radius: 4px; /* Bordes redondeados */
+            cursor: pointer; /* Cursor de puntero */
+            font-size: 16px; /* Tamaño de fuente */
+            width: 100%; /* Ocupa todo el ancho */
+            transition: background-color 0.3s; /* Transición de color */
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049; /* Color al pasar el mouse */
+        }
+    </style>
+</head>
+<body>
+    <div class="reservation-container">
+        <h2>Reserva de Cita</h2>
+        <form (ngSubmit)="onSubmit(reservationForm)" #reservationForm="ngForm">
+            <div class="form-group">
+                <label for="service">Selecciona el Servicio:</label>
+                <select id="service" required [(ngModel)]="selectedService" name="service">
+                    <option value="">-- Selecciona un servicio --</option>
+                    <option value="corte">Corte de Cabello</option>
+                    <option value="peinado">Peinado</option>
+                    <option value="maquillaje">Maquillaje</option>
+                    <option value="manicure">Manicure</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="stylist">Selecciona el Estilista:</label>
+                <select id="stylist" required [(ngModel)]="selectedStylist" name="stylist">
+                    <option value="">-- Selecciona un estilista --</option>
+                    <option value="maria">María López</option>
+                    <option value="carlos">Carlos Gómez</option>
+                    <option value="luisa">Luisa Martínez</option>
+                    <option value="juan">Juan Pérez</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Selecciona la Fecha:</label>
+                <input type="date" id="date" required [(ngModel)]="selectedDate" name="date">
+            </div>
+
+            <div class="form-group">
+                <label for="time">Selecciona la Hora:</label>
+                <input type="time" id="time" required [(ngModel)]="selectedTime" name="time">
+            </div>
+
+            <button type="submit" class="submit-btn">Editar Cita</button>
+        </form>
+    </div>
+</body>
+</html>

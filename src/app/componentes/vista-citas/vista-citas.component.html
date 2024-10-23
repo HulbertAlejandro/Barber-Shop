@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Citas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .table-container {
+            width: 80%;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        .edit-btn, .delete-btn {
+            color: #4CAF50;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        .edit-btn:hover {
+            color: #45a049;
+        }
+
+        .delete-btn:hover {
+            color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Servicio</th>
+                    <th>Estilista</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr onclick="showDetails('Juan Pérez', 'Corte de cabello', 'María López', '25/10/2024', '10:00 AM')">
+                    <td>Juan Pérez</td>
+                    <td>Corte de cabello</td>
+                    <td>María López</td>
+                    <td>25/10/2024</td>
+                    <td>10:00 AM</td>
+                    <td>
+                        <a href="#" class="edit-btn" title="Editar" onclick="editDetails(event, 'Juan Pérez', 'Corte de cabello', 'María López', '25/10/2024', '10:00 AM')">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="#" class="delete-btn" title="Eliminar" onclick="deleteCita(event, 'Juan Pérez')">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr onclick="showDetails('Laura Martínez', 'Peinado', 'Carlos Gómez', '26/10/2024', '02:00 PM')">
+                    <td>Laura Martínez</td>
+                    <td>Peinado</td>
+                    <td>Carlos Gómez</td>
+                    <td>26/10/2024</td>
+                    <td>02:00 PM</td>
+                    <td>
+                        <a href="#" class="edit-btn" title="Editar" onclick="editDetails(event, 'Laura Martínez', 'Peinado', 'Carlos Gómez', '26/10/2024', '02:00 PM')">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="#" class="delete-btn" title="Eliminar" onclick="deleteCita(event, 'Laura Martínez')">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                <!-- Puedes agregar más filas aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Mostrar detalles de la cita
+        function showDetails(usuario, servicio, estilista, fecha, hora) {
+            alert(`Detalles de la cita:\nUsuario: ${usuario}\nServicio: ${servicio}\nEstilista: ${estilista}\nFecha: ${fecha}\nHora: ${hora}`);
+        }
+
+        // Editar detalles de la cita
+        function editDetails(event, usuario, servicio, estilista, fecha, hora) {
+            event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+            window.location.href = `editar-cita.component.html?usuario=${encodeURIComponent(usuario)}&servicio=${encodeURIComponent(servicio)}&estilista=${encodeURIComponent(estilista)}&fecha=${encodeURIComponent(fecha)}&hora=${encodeURIComponent(hora)}`;
+        }
+
+        // Eliminar cita
+        function deleteCita(event, usuario) {
+            event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+            if (confirm(`¿Estás seguro de que deseas eliminar la cita de ${usuario}?`)) {
+                // Aquí puedes agregar la lógica para eliminar la cita, por ejemplo, hacer una llamada a un API.
+                alert(`Cita de ${usuario} eliminada correctamente`);
+            }
+        }
+    </script>
+</body>
+</html>
