@@ -18,6 +18,7 @@ export class RegistroComponent {
 
   private crearFormulario() {
     this.registroForm = this.formBuilder.group({
+      id: ['', [Validators.required]],
       nombre: ['', [Validators.required]],
       telefono: ['', [Validators.required, Validators.maxLength(10)]],
       correo: ['', [Validators.required, Validators.email]],

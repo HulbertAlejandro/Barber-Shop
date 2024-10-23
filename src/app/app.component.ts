@@ -11,6 +11,6 @@ import { FooterComponent } from "./componentes/footer/footer.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'barber-shop';
-  footer = 'Universidad del Quindío - 2024-2'
+
+  title = 'barber-shop'
 }
