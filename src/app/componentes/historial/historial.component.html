@@ -2,26 +2,97 @@
 
 <div class="table-container">
     <table class="tabla-servicios">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre Servicio</th>
-          <th>Descripción</th>
-          <th>Precio</th>
-          <th>Duración (min)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let servicio of historialServicios">
-          <td>{{ servicio.id }}</td>
-          <td>{{ servicio.nombreServicio }}</td>
-          <td>{{ servicio.descripcion }}</td>
-          <td>{{ servicio.precio | currency:'USD' }}</td> <!-- Formatea el precio como moneda -->
-          <td>{{ servicio.duracionMinutos }}</td>
-        </tr>
-      </tbody>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Servicio</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Duración (min)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let servicio of historialServicios">
+                <td>{{ servicio.id }}</td>
+                <td>{{ servicio.nombreServicio }}</td>
+                <td>{{ servicio.descripcion }}</td>
+                <td>{{ servicio.precio | currency:'USD' }}</td>
+                <td>{{ servicio.duracionMinutos }}</td>
+            </tr>
+        </tbody>
     </table>
-  </div>
-  
+</div>
 
-  <button class="btn-volver" (click)="volver()">Volver</button>
+<button class="btn-volver" (click)="volver()">Volver</button>
+
+<!-- Estilos -->
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: #f4f4f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        padding: 20px;
+    }
+
+    .title {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+    }
+
+    .table-container {
+        width: 80%;
+        max-width: 800px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .tabla-servicios {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+        cursor: pointer;
+    }
+
+    .btn-volver {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .btn-volver:hover {
+        background-color: #45a049;
+    }
+</style>
+
