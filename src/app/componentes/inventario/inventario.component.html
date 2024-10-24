@@ -1,46 +1,45 @@
 <div class="container">
-    <h2>Control de Inventario de Productos</h2>
-  
-    <!-- Formulario para agregar un nuevo producto -->
-    <div class="form-container">
-      <h3>Agregar Producto</h3>
-      <form (ngSubmit)="agregarProducto()">
-        <label for="nombre">Nombre del Producto:</label>
-        <input type="text" id="nombre" [(ngModel)]="nuevoProducto.nombre" name="nombre" required />
-  
-        <label for="cantidad">Cantidad:</label>
-        <input type="number" id="cantidad" [(ngModel)]="nuevoProducto.cantidad" name="cantidad" required />
-  
-        <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" [(ngModel)]="nuevoProducto.descripcion" name="descripcion" required></textarea>
-  
-        <button type="submit">Agregar</button>
-      </form>
-    </div>
-  
-    <!-- Listado de productos -->
-    <div class="product-list">
-      <h3>Lista de Productos</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Cantidad</th>
-            <th>Descripción</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let producto of productos">
-            <td>{{ producto.nombre }}</td>
-            <td [ngClass]="{ 'low-stock': producto.cantidad < 10 }">{{ producto.cantidad }}</td>
-            <td>{{ producto.descripcion }}</td>
-            <td>
-              <button (click)="eliminarProducto(producto.id)">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <h2>Control de Inventario de Productos</h2>
+
+  <!-- Formulario para agregar un nuevo producto -->
+  <div class="form-container">
+    <h3>Agregar Producto</h3>
+    <form (submit)="agregarProducto(); $event.preventDefault();">
+      <label for="nombre">Nombre del Producto:</label>
+      <input type="text" id="nombre" (input)="onInput($event, 'nombre')" required />
+
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" id="cantidad" (input)="onInput($event, 'cantidad')" required />
+
+      <label for="descripcion">Descripción:</label>
+      <textarea id="descripcion" (input)="onInput($event, 'descripcion')" required></textarea>
+
+      <button type="submit">Agregar</button>
+    </form>
   </div>
-  
+
+  <!-- Listado de productos -->
+  <div class="product-list">
+    <h3>Lista de Productos</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Cantidad</th>
+          <th>Descripción</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productos">
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.cantidad }}</td>
+          <td>{{ producto.descripcion }}</td>
+          <td>
+            <button (click)="eliminarProducto(producto.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

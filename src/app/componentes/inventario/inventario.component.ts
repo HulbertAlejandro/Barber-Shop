@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+// Interfaz para el producto
 interface Producto {
   id: number;
   nombre: string;
@@ -7,12 +8,16 @@ interface Producto {
   descripcion: string;
 }
 
+// Enumeración de las claves
+type ProductoKey = keyof Producto;
+
 @Component({
   selector: 'app-inventario',
   templateUrl: './inventario.component.html',
   styleUrls: ['./inventario.component.css']
 })
 export class InventarioComponent implements OnInit {
+  
   productos: Producto[] = [];
   nuevoProducto: Producto = { id: 0, nombre: '', cantidad: 0, descripcion: '' };
 
@@ -27,9 +32,13 @@ export class InventarioComponent implements OnInit {
 
   // Método para agregar un producto
   agregarProducto(): void {
-    this.nuevoProducto.id = this.productos.length + 1;
-    this.productos.push({ ...this.nuevoProducto });
-    this.nuevoProducto = { id: 0, nombre: '', cantidad: 0, descripcion: '' };
+    if (this.nuevoProducto.nombre && this.nuevoProducto.cantidad > 0) {
+      this.nuevoProducto.id = this.productos.length + 1;
+      this.productos.push({ ...this.nuevoProducto });
+      this.nuevoProducto = { id: 0, nombre: '', cantidad: 0, descripcion: '' };
+    } else {
+      alert("Por favor, complete todos los campos requeridos.");
+    }
   }
 
   // Método para eliminar un producto
@@ -37,8 +46,8 @@ export class InventarioComponent implements OnInit {
     this.productos = this.productos.filter(producto => producto.id !== id);
   }
 
-  // Método para verificar si un producto tiene stock bajo
-  verificarStock(): boolean {
-    return this.productos.some(producto => producto.cantidad < 10);
+  // Manejar entradas
+  onInput(event: Event, campo: ProductoKey): void {
+    const target = event.target as HTMLInputElement | null;
   }
 }
