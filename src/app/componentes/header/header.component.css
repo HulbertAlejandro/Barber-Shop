@@ -10,8 +10,9 @@
 .header-container {
   background-color: #4CAF50; /* Color de fondo */
   color: white;
-  padding: 20px;
-  text-align: center; /* Asegurar que el texto esté centrado */
+  padding: 20px; /* Espaciado interno */
+  width: 100vw; /* Asegura que ocupe todo el ancho de la ventana */
+  text-align: center;
 }
 
 /* Estilo para el título */

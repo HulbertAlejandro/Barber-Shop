@@ -1,0 +1,15 @@
+
+/* Puedes agregar estilos adicionales si es necesario */
+.container {
+    max-width: 600px; /* Ajusta el ancho máximo si lo deseas */
+    margin: 0 auto; /* Centra el contenedor */
+  }
+  
+  img {
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+  }
+/* catalogo.component.css */
+:host {
+    font-family: Arial, sans-serif;
+  }  

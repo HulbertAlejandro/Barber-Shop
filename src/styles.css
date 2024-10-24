@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ 
 .form-control.ng-invalid.ng-dirty {
     border-color: var(--bs-form-invalid-border-color);
     padding-right: calc(1.5em + 0.75rem);
