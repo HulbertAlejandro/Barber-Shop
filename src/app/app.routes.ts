@@ -6,6 +6,7 @@ import { HistorialComponent } from './componentes/historial/historial.component'
 import { ReservaCitaComponent } from './componentes/reserva-cita/reserva-cita.component';
 import { VistaComponent } from './componentes/vista-citas/vista-citas.component';
 import { EditarCitaComponent } from './componentes/editar-cita/editar-cita.component';
+import { InventarioComponent} from './componentes/inventario/inventario.component';
 
 export const routes: Routes = [
    { path: '', component: InicioComponent }, // Ruta principal
@@ -15,6 +16,7 @@ export const routes: Routes = [
    { path: 'reserva-cita', component: ReservaCitaComponent },
    { path: 'vista-citas', component: VistaComponent },
    { path: 'editar-cita', component: EditarCitaComponent },
+   { path: 'inventario', component: InventarioComponent},
    { path: '**', redirectTo: '', pathMatch: 'full' } // Ruta no encontrada redirige a la principal
 ];
 
