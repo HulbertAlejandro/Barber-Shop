@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { LoginDTO } from '../../dto/ClienteDTO/login-dto';
+import { AuthService } from '../../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +15,7 @@ export class LoginComponent {
 
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,  private authService : AuthService, private router: Router) {
     this.crearFormulario();
   }
 
@@ -25,12 +28,28 @@ export class LoginComponent {
 
   // Método que se ejecuta al enviar el formulario
   public iniciarSesion() {
-    if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
-      // Lógica para iniciar sesión
-    } else {
-      console.log('El formulario no es válido');
-    }
+    const login = this.loginForm.value as LoginDTO
+    console.log(login)
+    this.authService.iniciarSesion(login).subscribe({
+      next: (data) => {
+        // Swal.fire({
+        //   title: 'Cuenta creada',
+        //   text: 'La cuenta se ha creado correctamente',
+        //   icon: 'success',
+        //   confirmButtonText: 'Aceptar'
+        // });
+        console.log("INICIO DE SESION CORRECTO")// Redirige a la página de Activar Cuenta
+      },
+      error: (error) => {
+        // Swal.fire({
+        //   title: 'Error',
+        //   text: error.error.respuesta,
+        //   icon: 'error',
+        //   confirmButtonText: 'Aceptar'
+        // })
+        console.log("INICIO DE SESION INCORRECTO ")
+      }
+    });
   }
 }
 

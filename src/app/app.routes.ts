@@ -12,7 +12,7 @@ import { InventarioComponent} from './componentes/inventario/inventario.componen
 export const routes: Routes = [
    { path: '', component: InicioComponent }, // Ruta principal
    { path: 'login', component: LoginComponent }, // Ruta de login
-   { path: 'registro', component: RegistroComponent }, // Ruta de registro
+   { path: 'registro-cliente', component: RegistroComponent }, // Ruta de registro
    { path: 'historial', component: HistorialComponent }, // Ruta de historial
    { path: 'reserva-cita', component: ReservaCitaComponent },
    { path: 'vista-citas', component: VistaComponent },
