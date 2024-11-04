@@ -65,3 +65,9 @@ input[type="time"] {
 .submit-btn:hover {
     background-color: #45a049;
 }
+
+select {
+    color: black; /* Color del texto */
+    background-color: white; /* Color de fondo */
+  }
+  

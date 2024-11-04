@@ -1,9 +1,9 @@
 <div class="container mx-auto py-8">
     <div class="card bg-white p-8 rounded-md shadow-md">
-      <h5 class="text-2xl font-bold mb-6 text-center">Registro de Cliente</h5>
+      <h5 class="text-2xl font-bold mb-6 text-center">Login</h5>
       <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()">
         <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="id">correo:</label>
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="id">Correo:</label>
           <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md" formControlName="correo" />
         </div>
         
@@ -18,7 +18,7 @@
   
         <div class="text-center">
           <button type="submit" class="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300" >
-            Registrarse
+            Entrar
           </button>
         </div>
       </form>

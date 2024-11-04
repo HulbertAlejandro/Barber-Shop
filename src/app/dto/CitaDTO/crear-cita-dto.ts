@@ -3,5 +3,4 @@ export interface CrearCitaDTO {
     idServicio : string,
     idEstilista : string,
     fechaInicioCita : string
-
 }

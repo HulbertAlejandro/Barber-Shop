@@ -3,6 +3,5 @@ export interface VistaEdicionCitaDTO {
     idCliente : string,
     idServicio : string,
     idEstilista : string
-    fechanicioCita : string,
-    fechaFinCita : string
+    fechanicioCita : string
 }

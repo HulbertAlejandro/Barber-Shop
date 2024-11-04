@@ -16,7 +16,7 @@ export const routes: Routes = [
    { path: 'historial', component: HistorialComponent }, // Ruta de historial
    { path: 'reserva-cita', component: ReservaCitaComponent },
    { path: 'vista-citas', component: VistaComponent },
-   { path: 'editar-cita', component: EditarCitaComponent },
+   { path: 'editar-cita/:id', component: EditarCitaComponent },
    { path: 'catalogo', component: CatalogoComponent},
    { path: 'inventario', component: InventarioComponent},
    { path: '**', redirectTo: '', pathMatch: 'full' } // Ruta no encontrada redirige a la principal
