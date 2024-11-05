@@ -1,0 +1,141 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+body {
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Cambiar a flex-start para alinear hacia arriba */
+    margin: 0; /* Asegúrate de que no haya margen en el body */
+}
+
+.table-container {
+    width: 90%; /* Aumentar el ancho de la tabla */
+    max-width: 1200px; /* Ajustar el ancho máximo */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-top: 10px; /* Ajusta este valor para reducir el espaciado superior */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Ajustar la distribución */
+}
+
+th, td {
+    padding: 20px; /* Aumentar el espacio de las celdas */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word; /* Permitir que el contenido se ajuste */
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px; /* Aumentar el tamaño de fuente de los encabezados */
+}
+
+td {
+    font-size: 14px; /* Aumentar el tamaño de fuente de las celdas */
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.edit-btn, .delete-btn {
+    color: #4CAF50;
+    margin-right: 10px;
+    text-decoration: none;
+    font-size: 18px; /* Aumentar el tamaño de los iconos */
+}
+
+.edit-btn:hover {
+    color: #45a049;
+}
+
+.delete-btn:hover {
+    color: #f44336;
+}
+
+/* Estilos del modal */
+.modal-background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: flex; /* Usar flex para centrar */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center;
+    margin-top: 10px; /* Centrar verticalmente */
+    display: none; /* Ocultar por defecto */
+}
+.modal-content h2 {
+    margin-bottom: 20px; /* Aumentar este valor para más espacio */
+}
+.modal-background.show {
+    display: flex; /* Mostrar cuando se activa */
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    width: 400px; /* Ancho fijo del modal */
+}
+
+button {
+    margin-top: 10px;
+}
+.edit-btn,
+.delete-btn {
+    background: none; /* Sin fondo */
+    border: none; /* Sin borde */
+    color: #4CAF50; /* Color del texto (puedes cambiarlo según tu diseño) */
+    cursor: pointer; /* Cambiar el cursor al pasar el ratón */
+    font-size: 18px; /* Tamaño del icono */
+    text-decoration: none; /* Quitar el subrayado */
+}
+
+.edit-btn:hover {
+    color: #45a049; /* Color al pasar el ratón sobre el botón de editar */
+}
+
+.delete-btn {
+    color: #f44336; /* Color del texto para eliminar */
+}
+
+.delete-btn:hover {
+    color: #d32f2f; /* Color al pasar el ratón sobre el botón de eliminar */
+}
+.modal-content button {
+    background-color: #4CAF50; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 30px; /* Espaciado */
+    cursor: pointer; /* Cambiar el cursor al pasar el ratón */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-top: 10px;
+    margin-bottom: 10px; /* Espaciado superior */
+    display: inline-block; /* Asegurarte de que se comporte como un botón */
+}
+
+.modal-content button:hover {
+    background-color: #45a049; /* Color al pasar el ratón */
+}
+.main-title, .section-title {
+    margin: 40px 0; /* Espaciado superior e inferior aumentado */
+    text-align: center; /* Centrar el texto del título */
+  }

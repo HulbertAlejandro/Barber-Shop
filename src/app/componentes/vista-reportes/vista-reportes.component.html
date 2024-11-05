@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar de Empleado</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* Estilos */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .content-container {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+        .reservation-container, .table-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        h2, h3.section-title {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            color: black;
+            background-color: white;
+            margin-bottom: 10px;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <!-- Formulario de Fechas -->
+        <div class="reservation-container">
+            <h2>Edición de Estilista</h2>
+            <form [formGroup]="reporteForm" (ngSubmit)="obtenerReporte()">
+                <!-- Selección de la Fecha Inicial -->
+                <div class="form-group">
+                    <label for="fechaInicio">Selecciona la Fecha Inicial:</label>
+                    <input type="date" id="fechaInicio" formControlName="fechaInicio" />
+                </div>
+                <!-- Selección de la Fecha Final -->
+                <div class="form-group">
+                    <label for="fechaFin">Selecciona la Fecha Final:</label>
+                    <input type="date" id="fechaFin" formControlName="fechaFin" />
+                </div>
+                <!-- Botón de Enviar -->
+                <button (click)="cargarReporte()" type="submit" class="submit-btn">Obtener Reporte</button>
+            </form>
+        </div>
+
+        <!-- Tabla de Reportes -->
+        <div class="table-container">
+            <h3 class="section-title">Lista de Productos</h3>
+            <table>
+                <colgroup>
+                    <col style="width: 20%;">
+                    <col style="width: 20%;">
+                    <col style="width: 20%;">
+                    <col style="width: 20%;">
+                    <col style="width: 15%;">
+                    <col style="width: 15%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>Id Cita</th>
+                        <th>Servicio</th>
+                        <th>Estilista</th>
+                        <th>Cliente</th>
+                        <th>Fecha</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of reportes; track $index) {
+                        <tr >
+                            <td>{{ item.idCita }}</td>
+                            <td>{{ item.servicio }}</td>
+                            <td>{{ item.estilista }}</td>
+                            <td>{{ item.cliente }}</td>
+                            <td>{{ item.fecha }}</td>
+                            <td>{{ item.valor }}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

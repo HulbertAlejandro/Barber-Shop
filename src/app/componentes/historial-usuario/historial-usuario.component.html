@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Citas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .table-container {
+            width: 90%; /* Aumentar el ancho de la tabla */
+            max-width: 1200px; /* Ajustar el ancho máximo */
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed; /* Ajustar la distribución */
+        }
+
+        th, td {
+            padding: 20px; /* Aumentar el espacio de las celdas */
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            word-wrap: break-word; /* Permitir que el contenido se ajuste */
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px; /* Aumentar el tamaño de fuente de los encabezados */
+        }
+
+        td {
+            font-size: 14px; /* Aumentar el tamaño de fuente de las celdas */
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        .edit-btn, .delete-btn {
+            color: #4CAF50;
+            margin-right: 10px;
+            text-decoration: none;
+            font-size: 18px; /* Aumentar el tamaño de los iconos */
+        }
+
+        .edit-btn:hover {
+            color: #45a049;
+        }
+
+        .delete-btn:hover {
+            color: #f44336;
+        }
+
+        /* Estilos del modal */
+        .modal-background {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: flex; /* Usar flex para centrar */
+            justify-content: center; /* Centrar horizontalmente */
+            align-items: center; /* Centrar verticalmente */
+            display: none; /* Ocultar por defecto */
+        }
+
+        .modal-background.show {
+            display: flex; /* Mostrar cuando se activa */
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            width: 400px; /* Ancho fijo del modal */
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body class="h-50">
+    <div class="table-container">
+        <h3 class="section-title">Historial de Citas</h3>
+        <table>
+            <colgroup>
+                <col style="width: 20%;">
+                <col style="width: 20%;">
+                <col style="width: 20%;">
+                <col style="width: 20%;">
+                <col style="width: 20%;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Id Cita</th>
+                    <th>Servicio</th>
+                    <th>Estilista</th>
+                    <th>Fecha</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of historial; track $index) {
+                    <tr>
+                        <td>{{item.idCita}}</td>
+                        <td>{{item.servicio}}</td>
+                        <td>{{item.estilista}}</td>
+                        <td>{{item.fecha}}</td>
+                        <td>{{item.valor}}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

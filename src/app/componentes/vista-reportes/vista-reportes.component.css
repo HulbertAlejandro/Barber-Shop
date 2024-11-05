@@ -1,0 +1,127 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px; /* Ajuste opcional para limitar el ancho del contenedor */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-title, .section-title {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.main-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.section-title {
+    font-size: 18px;
+    color: #4CAF50;
+}
+
+/* Ajustes del formulario */
+.form-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.form-container button:hover {
+    background-color: #45a049;
+    text-align: center;
+}
+
+/* Estilo de la tabla centrada y con ancho ajustable */
+.table-container {
+    width: 170%; /* La tabla ocupará el 150% del contenedor */
+    max-width: none; /* Quita el límite de ancho máximo */
+    margin: 20px auto; /* Centra la tabla horizontalmente */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+button {
+    background: none;
+    border: none;
+    color: #f44336;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    color: #d32f2f;
+}

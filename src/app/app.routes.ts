@@ -8,17 +8,24 @@ import { VistaComponent } from './componentes/vista-citas/vista-citas.component'
 import { EditarCitaComponent } from './componentes/editar-cita/editar-cita.component';
 import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
 import { InventarioComponent} from './componentes/inventario/inventario.component';
+import { VistaEmpleadosComponent } from './componentes/vista-empleados/vista-empleados.component';
+import { EditarEmpleadosComponent } from './componentes/edicion-empleados/edicion-empleados.component';
+import { VistaReportesComponent } from './componentes/vista-reportes/vista-reportes.component';
+import { HistorialUsuarioComponent } from './componentes/historial-usuario/historial-usuario.component';
 
 export const routes: Routes = [
-   { path: '', component: InicioComponent }, // Ruta principal
-   { path: 'login', component: LoginComponent }, // Ruta de login
-   { path: 'registro-cliente', component: RegistroComponent }, // Ruta de registro
-   { path: 'historial', component: HistorialComponent }, // Ruta de historial
+   { path: '', component: InicioComponent },
+   { path: 'login', component: LoginComponent },
+   { path: 'registro-cliente', component: RegistroComponent },
    { path: 'reserva-cita', component: ReservaCitaComponent },
    { path: 'vista-citas', component: VistaComponent },
    { path: 'editar-cita/:id', component: EditarCitaComponent },
    { path: 'catalogo', component: CatalogoComponent},
    { path: 'inventario', component: InventarioComponent},
+   { path: 'empleados', component: VistaEmpleadosComponent},
+   { path: 'editar-estilista/:id', component: EditarEmpleadosComponent},
+   { path: 'reportes', component: VistaReportesComponent},
+   { path: 'historial', component: HistorialUsuarioComponent},
    { path: '**', redirectTo: '', pathMatch: 'full' } // Ruta no encontrada redirige a la principal
 ];
 

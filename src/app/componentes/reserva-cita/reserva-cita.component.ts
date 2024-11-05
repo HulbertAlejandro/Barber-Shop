@@ -93,15 +93,11 @@ export class ReservaCitaComponent implements OnInit {
     // Combina fecha y hora en un solo string
     const fechaCompleta = `${fecha}T${hora}:00`; // Esto da '2024-10-10T14:30:00'
 
-    // Crea un objeto Date a partir de la fecha completa
-    const fechaEvento = new Date(fechaCompleta);
-    const fechaFormateada = fechaEvento.toISOString().slice(0, 19); 
-
     const crearCita : CrearCitaDTO = {
       idCliente :'1104697206',
       idServicio : servicioSeleccionado?.id??'',
       idEstilista : estilistSeleccionado?.id??'',
-      fechaInicioCita : fechaFormateada
+      fechaInicioCita : fechaCompleta
     } 
 
     console.log(crearCita);
