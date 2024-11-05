@@ -6,6 +6,7 @@ import { CitaService } from '../../cita.service';
 import { TokenService } from '../../token.service';
 import { ItemServicioDTO } from '../../dto/ServicioDTO/item-servicio-dto';
 import { EstilistaDTO } from '../../dto/estilista-dto';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reserva-cita',
@@ -94,7 +95,7 @@ export class ReservaCitaComponent implements OnInit {
     const fechaCompleta = `${fecha}T${hora}:00`; // Esto da '2024-10-10T14:30:00'
 
     const crearCita : CrearCitaDTO = {
-      idCliente :'1104697206',
+      idCliente :this.tokenService.getIDCuenta(),
       idServicio : servicioSeleccionado?.id??'',
       idEstilista : estilistSeleccionado?.id??'',
       fechaInicioCita : fechaCompleta
@@ -103,10 +104,26 @@ export class ReservaCitaComponent implements OnInit {
     console.log(crearCita);
     this.citaService.crearCita(crearCita).subscribe({
       next: (data: any) => {
+        Swal.fire({
+          title: 'Reserva de Cita',
+           text: 'Se reservó la cita correctamente',
+           icon: 'success',
+           confirmButtonText: 'Aceptar'
+        });
         console.log("CITA RESERVADA CORRECTAMENTE");
       },
-      error: (data: any) => {
-        console.log("ERROR AL RESERVAR CITA", data.error);
+      error: (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.error.respuesta,
+          confirmButtonText: 'Reintentar',
+          customClass: {
+            title: 'swal-title-custom',
+            htmlContainer: 'swal-text-custom'
+          }
+        });
+        console.log("ERROR AL RESERVAR CITA", error);
       }
     });
   }

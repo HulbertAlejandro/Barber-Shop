@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CitasDTO } from '../../dto/CitaDTO/citas-dto';
 import { CommonModule } from '@angular/common';
 import { EstilistaDTO } from '../../dto/estilista-dto';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vista-citas',
@@ -67,10 +68,26 @@ export class VistaEmpleadosComponent {
     if (this.selectedEstilista?.id) {
       this.citaService.eliminarEstilista(this.selectedEstilista.id).subscribe({
           next: (data) => {
+            Swal.fire({
+              title: 'Carga de Datos',
+               text: 'Se cargaron los datos exitosamente',
+               icon: 'success',
+               confirmButtonText: 'Aceptar'
+            });
               this.showDeleteModal = false; // Cierra el modal de eliminación
               this.cargarEstilistas(); // Opcional: recargar las citas después de eliminar
           },
           error: (error) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: error.error.respuesta,
+              confirmButtonText: 'Reintentar',
+              customClass: {
+                title: 'swal-title-custom',
+                htmlContainer: 'swal-text-custom'
+              }
+            });
               console.error(error);
           },
       });

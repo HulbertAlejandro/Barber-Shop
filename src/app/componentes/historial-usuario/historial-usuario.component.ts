@@ -6,6 +6,8 @@ import { CitasDTO } from '../../dto/CitaDTO/citas-dto';
 import { CommonModule } from '@angular/common';
 import { EstilistaDTO } from '../../dto/estilista-dto';
 import { HistorialDTO } from '../../dto/historial-dto';
+import Swal from 'sweetalert2';
+import { TokenService } from '../../token.service';
 
 @Component({
   selector: 'app-vista-citas',
@@ -25,18 +27,34 @@ throw new Error('Method not implemented.');
 
   constructor(
     private citaService: CitaService,
-    private router: Router,
+    private router: Router,  private tokenService: TokenService
   ) {
     this.cargarHistorial();
   }
 
   private cargarHistorial() {
-    this.citaService.obtenerHistorial("1104697206").subscribe({
+    this.citaService.obtenerHistorial(this.tokenService.getIDCuenta()).subscribe({
       next: (data) => {
+        Swal.fire({
+          title: 'Carga de Datos',
+           text: 'Se cargaron los datos correctamente',
+           icon: 'success',
+           confirmButtonText: 'Aceptar'
+        });
         console.log(data.respuesta); // Verificar el contenido de los datos
         this.historial = data.respuesta;
       },
       error: (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.error.respuesta,
+          confirmButtonText: 'Reintentar',
+          customClass: {
+            title: 'swal-title-custom',
+            htmlContainer: 'swal-text-custom'
+          }
+        });
         console.error(error);
       },
     });

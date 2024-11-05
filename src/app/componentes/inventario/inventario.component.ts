@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { CitaService } from '../../cita.service';
 import { AgregarProductoStockDTO } from '../../dto/agregar-producto-stock-dto';
 import { ProductoStockDTO } from '../../dto/producto-stock-dto';
+import Swal from 'sweetalert2';
 
 @Component({
   standalone: true,
@@ -62,10 +63,26 @@ export class InventarioComponent implements OnInit {
     console.log("Id producto eliminar", id)
     this.citaService.eliminarProducto(id).subscribe({
       next: () => {
+        Swal.fire({
+          title: 'Eliminacion de Producto',
+           text: 'Se elimino el producto correctamente',
+           icon: 'success',
+           confirmButtonText: 'Aceptar'
+        });
         console.log("PRODUCTO ELIMINADO CORRECTAMENTE");
         this.cargarProductos(); // Recarga la lista de productos después de eliminar
       },
       error: (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.error.respuesta,
+          confirmButtonText: 'Reintentar',
+          customClass: {
+            title: 'swal-title-custom',
+            htmlContainer: 'swal-text-custom'
+          }
+        });
         console.log("ERROR AL ELIMINAR PRODUCTO", error);
       }
     });

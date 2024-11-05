@@ -8,6 +8,7 @@ import { EstilistaDTO } from '../../dto/estilista-dto';
 import { CrearCitaDTO } from '../../dto/CitaDTO/crear-cita-dto';
 import { VistaEdicionCitaDTO } from '../../dto/CitaDTO/vista-edicion-cita-dto';
 import { EditarCitaDTO } from '../../dto/CitaDTO/editar-cita-dto';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-cita',
@@ -145,9 +146,25 @@ obtenerCita() {
   
     this.citaService.editarCita(editarCita).subscribe({
       next: () => {
+        Swal.fire({
+          title: 'Edicion de Cita',
+           text: 'Edicion de cita realizada correctamente',
+           icon: 'success',
+           confirmButtonText: 'Aceptar'
+        });
         console.log("CITA EDITADA CORRECTAMENTE");
       },
       error: (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.error.respuesta,
+          confirmButtonText: 'Reintentar',
+          customClass: {
+            title: 'swal-title-custom',
+            htmlContainer: 'swal-text-custom'
+          }
+        });
         console.log("ERROR AL EDITAR CITA", error);
       }
     });

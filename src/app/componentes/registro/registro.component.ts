@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControlOptions, ReactiveFor
 import { CrearClienteDTO } from '../../dto/ClienteDTO/crear-cliente-dto';
 import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -55,10 +56,26 @@ export class RegistroComponent {
   
     this.authService.crearCuenta(crearCuenta).subscribe({
       next: (data) => {
+        Swal.fire({
+          title: 'Creacion de Cuenta',
+           text: 'Se creo la cuenta correctamente',
+           icon: 'success',
+           confirmButtonText: 'Aceptar'
+        });
         console.log("CUENTA CREADA", data.respuesta);
         // Redirige a la página de Activar Cuenta
       },
       error: (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.error.respuesta,
+          confirmButtonText: 'Reintentar',
+          customClass: {
+            title: 'swal-title-custom',
+            htmlContainer: 'swal-text-custom'
+          }
+        });
         console.log("NO SE CREO LA CUENTA ");
       }
     });

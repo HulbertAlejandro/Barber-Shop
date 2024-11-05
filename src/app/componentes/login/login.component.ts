@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { LoginDTO } from '../../dto/ClienteDTO/login-dto';
 import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { TokenService } from '../../token.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginComponent {
 
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,  private authService : AuthService, private router: Router) {
+  constructor(private formBuilder: FormBuilder,  private authService : AuthService, private router: Router,  private tokenService: TokenService) {
     this.crearFormulario();
   }
 
@@ -32,21 +34,27 @@ export class LoginComponent {
     console.log(login)
     this.authService.iniciarSesion(login).subscribe({
       next: (data) => {
-        // Swal.fire({
-        //   title: 'Cuenta creada',
-        //   text: 'La cuenta se ha creado correctamente',
-        //   icon: 'success',
-        //   confirmButtonText: 'Aceptar'
-        // });
+        Swal.fire({
+          title: 'Inicio de Sesion',
+           text: 'Inicio de sesion correcto',
+           icon: 'success',
+           confirmButtonText: 'Aceptar'
+        });
+        this.tokenService.login(data.respuesta.token);
         console.log("INICIO DE SESION CORRECTO")// Redirige a la página de Activar Cuenta
+        console.log(data.respuesta)
       },
       error: (error) => {
-        // Swal.fire({
-        //   title: 'Error',
-        //   text: error.error.respuesta,
-        //   icon: 'error',
-        //   confirmButtonText: 'Aceptar'
-        // })
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.error.respuesta,
+          confirmButtonText: 'Reintentar',
+          customClass: {
+            title: 'swal-title-custom',
+            htmlContainer: 'swal-text-custom'
+          }
+        });
         console.log("INICIO DE SESION INCORRECTO ")
       }
     });

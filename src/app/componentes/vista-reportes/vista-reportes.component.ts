@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CitaService } from '../../cita.service';
 import { RangoFechasDTO } from '../../dto/rango-fechas-dto';
 import { ReporteDTO } from '../../dto/reporte-dto';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-cita',
@@ -42,11 +43,27 @@ export class VistaReportesComponent{
   
     this.citaService.obtenerReporte(rangoFechas).subscribe({
       next: (data) => {
+        Swal.fire({
+          title: 'Carga de Reportes',
+           text: 'Se cargo el reporte exitosamente',
+           icon: 'success',
+           confirmButtonText: 'Aceptar'
+        });
         this.reportes = data.respuesta
         console.log(this.reportes)
         console.log("REPORTE GENERADO CORRECTAMENTE");
       },
       error: (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.error.respuesta,
+          confirmButtonText: 'Reintentar',
+          customClass: {
+            title: 'swal-title-custom',
+            htmlContainer: 'swal-text-custom'
+          }
+        });
         console.log("ERROR AL GENERAR EL REPORTE", error);
       }
     });

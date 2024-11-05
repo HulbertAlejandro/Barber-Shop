@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
-import { HistorialComponent } from './componentes/historial/historial.component';
 import { ReservaCitaComponent } from './componentes/reserva-cita/reserva-cita.component';
 import { VistaComponent } from './componentes/vista-citas/vista-citas.component';
 import { EditarCitaComponent } from './componentes/editar-cita/editar-cita.component';

@@ -4,6 +4,7 @@ import { CitaService } from '../../cita.service';
 import { Router } from '@angular/router';
 import { CitasDTO } from '../../dto/CitaDTO/citas-dto';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vista-citas',
@@ -66,10 +67,26 @@ export class VistaComponent {
     if (this.selectedCita?.idCita) {
       this.citaService.eliminarCita(this.selectedCita.idCita).subscribe({
           next: (response) => {
+            Swal.fire({
+              title: 'Se cargaron los datos',
+               text: 'Se cargaron los datos exitosamente',
+               icon: 'success',
+               confirmButtonText: 'Aceptar'
+            });
               this.showDeleteModal = false; // Cierra el modal de eliminación
               this.cargarCitas(); // Opcional: recargar las citas después de eliminar
           },
           error: (error) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: error.error.respuesta,
+              confirmButtonText: 'Reintentar',
+              customClass: {
+                title: 'swal-title-custom',
+                htmlContainer: 'swal-text-custom'
+              }
+            });
               console.error(error);
           },
       });
