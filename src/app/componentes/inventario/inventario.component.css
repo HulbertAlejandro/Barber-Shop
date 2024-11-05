@@ -1,59 +1,119 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}body {
+  background-color: #f4f4f9;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alinea el contenido al inicio superior */
+  min-height: 100vh; /* Permite que la página tenga scroll si es necesario */
+}
+
 .container {
-    width: 60%;
-    margin: 0 auto;
-  }
-  
-  h2, h3 {
-    text-align: center;
-  }
-  
-  .form-container {
-    margin-bottom: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    margin-top: 10px;
-  }
-  
-  input, textarea, button {
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  button {
-    margin-top: 20px;
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .low-stock {
-    color: red;
-    font-weight: bold;
-  }
-  
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrar horizontalmente */
+}
+
+/* Estilo para los títulos con más espaciado */
+.main-title, .section-title {
+  margin: 40px 0; /* Espaciado superior e inferior aumentado */
+  text-align: center; /* Centrar el texto del título */
+}
+
+.main-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.section-title {
+  font-size: 20px;
+  color: #4CAF50;
+}
+
+/* Borde y espaciado para el formulario */
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  margin-bottom: 40px; /* Aumentar el espaciado inferior para más separación */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-container button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background-color: #45a049;
+}
+
+/* Tabla con más ancho */
+.table-container {
+  width: 60%;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+button {
+  background: none;
+  border: none;
+  color: #f44336;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  color: #d32f2f;
+}

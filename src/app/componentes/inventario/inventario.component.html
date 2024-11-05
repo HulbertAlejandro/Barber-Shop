@@ -1,44 +1,55 @@
 <div class="container">
-  <h2>Control de Inventario de Productos</h2>
+  <h2 class="main-title">Control de Inventario de Productos</h2>
 
-  <!-- Formulario para agregar un nuevo producto -->
+  <!-- Contenedor con borde para el formulario -->
   <div class="form-container">
-    <h3>Agregar Producto</h3>
-    <form (submit)="agregarProducto(); $event.preventDefault();">
-      <label for="nombre">Nombre del Producto:</label>
-      <input type="text" id="nombre" (input)="onInput($event, 'nombre')" required />
+    <h3 class="section-title">Agregar Producto</h3>
+    <form [formGroup]="productoForm" (ngSubmit)="agregarProducto()">
+      <div class="mb-4">
+        <label for="nombre">Nombre:</label>
+        <input type="text" formControlName="nombre" />
+      </div>
 
-      <label for="cantidad">Cantidad:</label>
-      <input type="number" id="cantidad" (input)="onInput($event, 'cantidad')" required />
+      <div class="mb-4">
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" formControlName="cantidad" />
+      </div>
 
-      <label for="descripcion">Descripción:</label>
-      <textarea id="descripcion" (input)="onInput($event, 'descripcion')" required></textarea>
+      <div class="mb-4">
+        <label for="precio">Precio:</label>
+        <input type="number" formControlName="precio" />
+      </div>
 
-      <button type="submit">Agregar</button>
+      <div class="text-center">
+        <button type="submit" [disabled]="productoForm.invalid">Agregar Producto</button>
+      </div>
     </form>
   </div>
 
-  <!-- Listado de productos -->
-  <div class="product-list">
-    <h3>Lista de Productos</h3>
+  <!-- Contenedor para la tabla -->
+  <div class="table-container">
+    <h3 class="section-title">Lista de Productos</h3>
     <table>
       <thead>
         <tr>
           <th>Nombre</th>
           <th>Cantidad</th>
-          <th>Descripción</th>
+          <th>Precio</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let producto of productos">
-          <td>{{ producto.nombre }}</td>
-          <td>{{ producto.cantidad }}</td>
-          <td>{{ producto.descripcion }}</td>
-          <td>
-            <button (click)="eliminarProducto(producto.id)">Eliminar</button>
-          </td>
-        </tr>
+        @for (item of productos; track $index) {
+          <tr>
+            <td>{{ item.producto }}</td>
+            <td>{{ item.cantidad }}</td>
+            <td>{{ item.precio }}</td>
+            <td>
+              <button (click)="eliminarProducto(item.idProducto)">Eliminar</button>
+            </td>
+          </tr>
+        }
+        
       </tbody>
     </table>
   </div>

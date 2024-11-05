@@ -1,53 +1,72 @@
 import { Component, OnInit } from '@angular/core';
-
-// Interfaz para el producto
-interface Producto {
-  id: number;
-  nombre: string;
-  cantidad: number;
-  descripcion: string;
-}
-
-// Enumeración de las claves
-type ProductoKey = keyof Producto;
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CitaService } from '../../cita.service';
+import { AgregarProductoStockDTO } from '../../dto/agregar-producto-stock-dto';
+import { ProductoStockDTO } from '../../dto/producto-stock-dto';
 
 @Component({
+  standalone: true,
+  imports: [ReactiveFormsModule],
   selector: 'app-inventario',
   templateUrl: './inventario.component.html',
   styleUrls: ['./inventario.component.css']
 })
 export class InventarioComponent implements OnInit {
-  
-  productos: Producto[] = [];
-  nuevoProducto: Producto = { id: 0, nombre: '', cantidad: 0, descripcion: '' };
+  productoForm!: FormGroup;
+  productos: ProductoStockDTO[] = [];
+
+  constructor(private citaService: CitaService, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    // Inicializar productos de ejemplo
-    this.productos = [
-      { id: 1, nombre: 'Champú', cantidad: 15, descripcion: 'Champú hidratante para cabello seco' },
-      { id: 2, nombre: 'Tinte', cantidad: 8, descripcion: 'Tinte color rubio' },
-      { id: 3, nombre: 'Acondicionador', cantidad: 25, descripcion: 'Acondicionador reparador' }
-    ];
+    this.crearFormulario();
+    this.cargarProductos();
   }
 
-  // Método para agregar un producto
+  crearFormulario() {
+    this.productoForm = this.formBuilder.group({
+      nombre: ['', Validators.required],
+      cantidad: ['', [Validators.required, Validators.min(1)]],
+      precio: ['', [Validators.required, Validators.min(0.01)]]
+    });
+  }
+
+  cargarProductos() {
+    this.citaService.getInventario().subscribe({
+      next: (data) => {
+        console.log("Productos" , data.respuesta); // Verificar el contenido de los datos
+        this.productos = data.respuesta;
+
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
+  }
+
   agregarProducto(): void {
-    if (this.nuevoProducto.nombre && this.nuevoProducto.cantidad > 0) {
-      this.nuevoProducto.id = this.productos.length + 1;
-      this.productos.push({ ...this.nuevoProducto });
-      this.nuevoProducto = { id: 0, nombre: '', cantidad: 0, descripcion: '' };
-    } else {
-      alert("Por favor, complete todos los campos requeridos.");
-    }
+    const nuevoProducto: AgregarProductoStockDTO = this.productoForm.value;
+
+    this.citaService.agregarInventario(nuevoProducto).subscribe({
+      next: () => {
+        console.log("PRODUCTO AGREGADO CORRECTAMENTE");
+        this.cargarProductos(); // Recarga la lista de productos
+        this.productoForm.reset(); // Limpia el formulario después de agregar
+      },
+      error: (error) => {
+        console.log("ERROR AL AGREGAR PRODUCTO", error);
+      }
+    });
   }
 
-  // Método para eliminar un producto
-  eliminarProducto(id: number): void {
-    this.productos = this.productos.filter(producto => producto.id !== id);
-  }
-
-  // Manejar entradas
-  onInput(event: Event, campo: ProductoKey): void {
-    const target = event.target as HTMLInputElement | null;
+  eliminarProducto(id: string): void {
+    this.citaService.eliminarProducto(id).subscribe({
+      next: () => {
+        console.log("PRODUCTO ELIMINADO CORRECTAMENTE");
+        this.cargarProductos(); // Recarga la lista de productos después de eliminar
+      },
+      error: (error) => {
+        console.log("ERROR AL ELIMINAR PRODUCTO", error);
+      }
+    });
   }
 }
