@@ -59,6 +59,7 @@ export class InventarioComponent implements OnInit {
   }
 
   eliminarProducto(id: string): void {
+    console.log("Id producto eliminar", id)
     this.citaService.eliminarProducto(id).subscribe({
       next: () => {
         console.log("PRODUCTO ELIMINADO CORRECTAMENTE");

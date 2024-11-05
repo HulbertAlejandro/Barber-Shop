@@ -45,12 +45,12 @@ export class CitaService {
     return this.http.get<MensajeDTO>(`${this.apiInventario}/listarProductos`);
   } 
 
-  agregarInventario(agregarProducto: AgregarProductoStockDTO) {
+  agregarInventario(agregarProducto: AgregarProductoStockDTO) : Observable<MensajeDTO> {
     return this.http.post<MensajeDTO>(`${this.apiInventario}/agregarProducto`, agregarProducto);
   }
 
-  eliminarProducto(id: string) {
-    return this.http.delete<MensajeDTO>(`${this.apiCita}/eliminar-producto/${id}`);
+  eliminarProducto(id: string): Observable<MensajeDTO> {
+    return this.http.delete<MensajeDTO>(`${this.apiInventario}/eliminarProducto/${id}`);
   }
 
 
