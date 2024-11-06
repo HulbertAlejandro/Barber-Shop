@@ -1,3 +1,5 @@
+import { EstadoCita } from "./estado-cita"
+
 export interface CitasDTO {
     idCita : string,
     servicio : string,
@@ -5,4 +7,5 @@ export interface CitasDTO {
     cliente : string,
     fechaInicioCita : string
     horaCita : string
+    estado : EstadoCita
 }

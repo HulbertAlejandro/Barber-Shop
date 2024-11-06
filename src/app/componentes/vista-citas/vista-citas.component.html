@@ -119,6 +119,7 @@
                     <th>Cliente</th>
                     <th>Fecha</th>
                     <th>Hora</th>
+                    <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -131,6 +132,7 @@
                         <td>{{item.cliente}}</td>
                         <td>{{item.fechaInicioCita}}</td>
                         <td>{{item.horaCita}}</td>
+                        <td>{{item.estado}}</td>
                         <td>
                             <button class="edit-btn" title="Editar" (click)="editarCita(item.idCita, $event)">
                                 <i class="fas fa-edit"></i>
@@ -138,6 +140,10 @@
                             <button class="delete-btn" title="Eliminar" (click)="confirmDelete(item, $event)">
                                 <i class="fas fa-trash"></i>
                             </button>
+                            <button class="update-btn" title="Actualizar Estado" (click)="updateCitaEstado(item)">
+                                <i class="fas fa-check-square"></i>
+                            </button>
+                                                      
                         </td>
                     </tr>
                 }

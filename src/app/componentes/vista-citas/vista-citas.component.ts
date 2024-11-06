@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CitasDTO } from '../../dto/CitaDTO/citas-dto';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
+import { CitaUpdateDTO } from '../../dto/CitaDTO/cita-update-dto';
 
 @Component({
   selector: 'app-vista-citas',
@@ -99,4 +100,44 @@ export class VistaComponent {
   closeDeleteModal() {
     this.showDeleteModal = false; // Cierra el modal de eliminación
   }
+
+  updateCitaEstado(cita: any) {
+
+    const updateCita : CitaUpdateDTO = {
+      idCita: cita.idCita
+    }
+
+    if (cita.idCita) {
+
+      this.citaService.updateCita(updateCita).subscribe({
+          next: (data) => {
+            Swal.fire({
+              title: 'ESTADO CITA',
+               text: 'Se cambio el estado de la cita',
+               icon: 'success',
+               confirmButtonText: 'Aceptar'
+            });
+              this.showDeleteModal = false; // Cierra el modal de eliminación
+              this.cargarCitas(); // Opcional: recargar las citas después de eliminar
+          },
+          error: (error) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: error.error.respuesta,
+              confirmButtonText: 'Reintentar',
+              customClass: {
+                title: 'swal-title-custom',
+                htmlContainer: 'swal-text-custom'
+              }
+            });
+              console.error(error);
+          },
+      });
+  } else {
+      alert('No se pudo cambiar el estado de la cita: ID no encontrado');
+  } 
+    
+  }
+  
 }

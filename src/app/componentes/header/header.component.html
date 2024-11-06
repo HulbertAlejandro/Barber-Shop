@@ -42,6 +42,16 @@
        }
        @if (rol === 'ADMINISTRADOR') {
         <li class="nav-item">
+          <a routerLink="/crear-servicio" class="nav-link text-decoration-underline link-secondary">Crear Servicio</a>
+        </li>
+       }
+       @if (rol === 'ADMINISTRADOR') {
+        <li class="nav-item">
+          <a routerLink="/crear-estilista" class="nav-link text-decoration-underline link-secondary">Crear Estilista</a>
+        </li>
+       }
+       @if (rol === 'ADMINISTRADOR') {
+        <li class="nav-item">
           <a routerLink="/catalogo" class="nav-link text-decoration-underline link-secondary">Catálogo</a>
         </li>
        }

@@ -11,10 +11,11 @@ import { VistaEmpleadosComponent } from './componentes/vista-empleados/vista-emp
 import { EditarEmpleadosComponent } from './componentes/edicion-empleados/edicion-empleados.component';
 import { VistaReportesComponent } from './componentes/vista-reportes/vista-reportes.component';
 import { HistorialUsuarioComponent } from './componentes/historial-usuario/historial-usuario.component';
+import { CreacionServicioComponent } from './componentes/creacion-servicio/creacion-servicio.component';
+import { CreacionEmpleadoComponent } from './componentes/creacion-empleado/creacion-empleado.component';
 
 export const routes: Routes = [
-   { path: '', component: InicioComponent },
-   { path: 'login', component: LoginComponent },
+   { path: '', component: LoginComponent },
    { path: 'registro-cliente', component: RegistroComponent },
    { path: 'reserva-cita', component: ReservaCitaComponent },
    { path: 'vista-citas', component: VistaComponent },
@@ -25,6 +26,8 @@ export const routes: Routes = [
    { path: 'editar-estilista/:id', component: EditarEmpleadosComponent},
    { path: 'reportes', component: VistaReportesComponent},
    { path: 'historial', component: HistorialUsuarioComponent},
+   { path: 'crear-servicio', component: CreacionServicioComponent},
+   { path: 'crear-estilista', component: CreacionEmpleadoComponent},
    { path: '**', redirectTo: '', pathMatch: 'full' } // Ruta no encontrada redirige a la principal
 ];
 

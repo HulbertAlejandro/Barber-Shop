@@ -21,24 +21,29 @@
 </head>
 <body>
     <div class="reservation-container">
-        <h2>Edición de Estilista</h2>
-        <form [formGroup]="estilistaForm" (ngSubmit)="editarEstilista()">
+        <h2>Edicion de Estilista</h2>
+        <form [formGroup]="servicioForm" (ngSubmit)="crearServicio()">
+            <!-- Selección del Servicio -->
             <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" formControlName="nombre"/>
+                <label for="servicio">Nombre del Servicio:</label>
+                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md" formControlName="nombre"/>
             </div>
             <div class="form-group">
-                <label for="especialidad">Selecciona la especialidad:</label>
-                <select id="especialidad" formControlName="especialidad">
-                    @for (item of servicios; track $index) {
-                        <option [value]="item.nombreServicio">
-                            {{ item.nombreServicio }}
-                        </option>
-                    }
-                    
-                </select>
+                <label for="servicio">Descripción del Servicio:</label>
+                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md" formControlName="descripcion"/>
             </div>
-            <button type="submit" class="submit-btn">Editar Estilista</button>
+            <div class="form-group">
+                <label for="servicio">Precio del Servicio:</label>
+                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md" formControlName="precio"/>
+            </div>
+            <div class="form-group">
+                <label for="servicio">Duración:</label>
+                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md" formControlName="duracion" />
+            </div>
+            <!-- Botón de Enviar -->
+            <button type="submit" class="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300" [disabled]="servicioForm.invalid">
+                Registrarse
+            </button>
         </form>
     </div>
 </body>

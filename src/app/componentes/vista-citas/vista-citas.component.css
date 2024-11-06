@@ -135,3 +135,21 @@ button {
 .modal-content button:hover {
     background-color: #45a049; /* Color al pasar el ratón */
 }
+.update-btn {
+    color: #4CAF50;
+    font-size: 18px;
+    background-color: transparent; /* Fondo transparente */
+    border: none; /* Eliminar el borde */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    padding: 2px; /* Añadir algo de relleno para mejorar la apariencia */
+    transition: color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.update-btn:hover {
+    color: #45a049;
+}
+
+.update-btn:focus {
+    outline: none; /* Eliminar el borde de enfoque al hacer clic */
+}
+

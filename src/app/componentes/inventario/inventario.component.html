@@ -35,7 +35,11 @@
           <th>Nombre</th>
           <th>Cantidad</th>
           <th>Precio</th>
-          <th>Acciones</th>
+          <th>Agregar Cantidad</th>
+          <th>Agregar</th>
+          <th>Quitar  Cantidad</th>
+          <th>Eliminar</th>
+          <th>Producto</th>
         </tr>
       </thead>
       <tbody>
@@ -45,7 +49,19 @@
             <td>{{ item.cantidad }}</td>
             <td>{{ item.precio }}</td>
             <td>
-              <button (click)="eliminarProducto(item.id)">Eliminar</button>
+              <input type="number"  style="width: 35%" [(ngModel)]="item.cantidadAgregar" min="1" />
+            </td>
+            <td>
+              <button (click)="agregarCantidadProducto(item.id, item.cantidadAgregar)">Agregar Cantidad</button>
+            </td>
+            <td>
+              <input type="number" style="width: 55%" [(ngModel)]="item.cantidadAEliminar" min="1" max="{{ item.cantidad }}" />
+            </td>
+            <td>
+              <button (click)="reducirCantidadProducto(item.id, item.cantidadAEliminar)">Reducir Cantidad</button>
+            </td>
+            <td>
+              <button (click)="eliminarProducto(item.id)">Eliminar Producto</button>
             </td>
           </tr>
         }

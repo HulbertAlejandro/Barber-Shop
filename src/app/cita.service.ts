@@ -8,6 +8,10 @@ import { EditarCitaDTO } from './dto/CitaDTO/editar-cita-dto';
 import { AgregarProductoStockDTO } from './dto/agregar-producto-stock-dto';
 import { EstilistaDTO } from './dto/estilista-dto';
 import { RangoFechasDTO } from './dto/rango-fechas-dto';
+import { CrearServicioDTO } from './dto/ServicioDTO/crear-servicio-dto';
+import { CreacionEmpleadoDTO } from './dto/creacion-empleado-dto';
+import { CitaUpdateDTO } from './dto/CitaDTO/cita-update-dto';
+import { AgregarCantidadProductoStockDTO } from './dto/agregar-cantidad-producto';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +26,10 @@ export class CitaService {
 
 
   //CITAS
+
+  updateCita(cita : CitaUpdateDTO): Observable<MensajeDTO> {
+    return this.http.put<MensajeDTO>(`${this.apiCita}/update-cita`, cita);
+  }
 
   editarCita(edicion : EditarCitaDTO): Observable<MensajeDTO> {
     return this.http.put<MensajeDTO>(`${this.apiCita}/editar-cita`, edicion);
@@ -45,6 +53,11 @@ export class CitaService {
 
 
   //SERVICIOS
+
+  crearServicio(servicioData: CrearServicioDTO): Observable<MensajeDTO> {
+    return this.http.post<MensajeDTO>(`${this.apiService}/crear-servicio`, servicioData);
+  }
+
   getServicios(): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.apiService}/obtener`);
   }
@@ -52,6 +65,11 @@ export class CitaService {
 
 
   //ESTILISTAS
+
+
+  crearEmpleado(empleadoData: CreacionEmpleadoDTO): Observable<MensajeDTO> {
+    return this.http.post<MensajeDTO>(`${this.apiEstilista}/crear-estilista`, empleadoData);
+  }
 
   getEstilistas(): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.apiEstilista}/obtener`);
@@ -72,6 +90,15 @@ export class CitaService {
 
   
   //INVENTARIO
+  agregarCantidadProducto(cantidad :AgregarCantidadProductoStockDTO): Observable<MensajeDTO>{
+    return this.http.post<MensajeDTO>(`${this.apiInventario}/agregar-cantidad-producto`, cantidad);
+  }
+  
+  reducirCantidadProducto(id :string, cantidad : string): Observable<MensajeDTO> {
+    console.log("ID : " , id, " cantidad : ", cantidad)
+    return this.http.delete<MensajeDTO>(`${this.apiInventario}/eliminar-cantidad/${id}/${cantidad}`);
+  }
+
   getInventario(): Observable<MensajeDTO> {
     return this.http.get<MensajeDTO>(`${this.apiInventario}/listarProductos`);
   } 
