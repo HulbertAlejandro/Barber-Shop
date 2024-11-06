@@ -34,7 +34,7 @@ public isLogged(): boolean {
 public login(token: string) {
   this.setToken(token);
   const rol = this.getRol();
-  let destino = rol == "ADMINISTRADOR" ? "/panel-admin" : "/";
+  let destino = rol == "ADMINISTRADOR" ? "/empleados" : "/catalogo";
   this.router.navigate([destino]).then(() => {
     window.location.reload();
   });
